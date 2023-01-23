@@ -2,7 +2,7 @@
 
 // import Car from "../Resources/Images/car1.png"
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
-import Cities from "../lib/AllCity";
+
 import Search from "./Search";
 import Image from "next/image";
 

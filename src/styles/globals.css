@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root{
+    --mainbg:rgb(81, 162, 248)
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    transition: 0.4s linear ease;
+    -webkit-transition: 0.4s linear ease;
+    -moz-transition: 0.4s linear ease;
+    -ms-transition: 0.4s linear ease;
+    -o-transition: 0.4s linear ease;
+    list-style-type: none;
+    
+}
+.mainbackground{
+    background-color: var(--mainbg);
+}
+.mainbgImage{
+    background-image: url('../../public/Resources/Images/mainbg.png');
+}
+.active_class{
+    background-color: white;
+}
+
+a,li{
+    transition: 0.4s linear;
+    -webkit-transition: 0.4s linear;
+    -moz-transition: 0.4s linear;
+    -ms-transition: 0.4s linear;
+    -o-transition: 0.4s linear;
+}
+
+a:hover,li:hover{
+    transform: translate(0, 2px) !important;
+    -webkit-transform: translate(0, 2px) !important;
+    -moz-transform: translate(0, 2px) !important;
+    -ms-transform: translate(0, 2px) !important;
+    -o-transform: translate(0, 2px) !important;
+    
+}

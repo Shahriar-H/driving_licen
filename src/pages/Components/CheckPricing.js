@@ -1,6 +1,6 @@
 
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
-import Cities from '../utils/AllCity';
+import Cities from '../lib/AllCity';
 
 const CheckPricing = () => {
 

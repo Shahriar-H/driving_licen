@@ -2,7 +2,7 @@
 // import Bg from "../Resources/Images/mainbg.png"
 // import Car from "../Resources/Images/car1.png"
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
-import Cities from '../utils/AllCity';
+import Cities from '../lib/AllCity';
 
 const Search = () => {
 

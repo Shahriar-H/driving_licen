@@ -1,4 +1,4 @@
-import React from "react";
+
 
 // import Car from "../Resources/Images/car1.png"
 import { ReactSearchAutocomplete } from "react-search-autocomplete";

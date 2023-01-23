@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 import Cities from '../utils/AllCity';
 

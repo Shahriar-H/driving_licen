@@ -5,7 +5,7 @@ import FaqCom from '../Components/Faq';
 import GiftCard from '../Components/GiftCard';
 import Howitswork from '../Components/Howitswork';
 import MainSection from '../Components/MainSection';
-import Review from '../Components/Review';
+// import Review from '../Components/Review';
 import Seoparagraph from '../Components/Seoparagraph';
 import WhyBest from '../Components/WhyBest';
 
@@ -17,7 +17,7 @@ const Home = () => {
             <MainSection/>
             <CheckPricing/>
             <Howitswork/>
-            <Review/>
+            {/* <Review/> */}
             <DrivingLesseon/>
             <GiftCard/>
             <FaqCom/>

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import MainSection from '../Components/MainSection';
 import Search from '../Components/Search';
 // import Bg from "../Resources/Images/mainbg.png"

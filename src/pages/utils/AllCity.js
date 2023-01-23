@@ -1,4 +1,4 @@
-let Cities = [
+const Cities = [
     {
         "name": "Sydney",
         "id": 0

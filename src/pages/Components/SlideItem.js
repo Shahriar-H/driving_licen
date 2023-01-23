@@ -20,7 +20,7 @@ const SlideItem = () => {
                         <p className='text-gray-500'>Anita is such an AMAZING instructor!! She is very patient and really observant. After only 3 lessons she prepared me for the test and passed on the first go. Thanks so much Anita!!</p>
                     </div><br></br>
 
-                    <i>David</i>
+                    <p>David</p>
                 </div>
     );
 }

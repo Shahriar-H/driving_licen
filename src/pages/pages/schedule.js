@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import {useState,useEffect} from 'react';
 import Package from '../Components/BookOnline/Package';
 import Search from '../Components/Search';
 // import Bg from "../Resources/Images/mainbg.png"
@@ -10,7 +10,7 @@ import Header from '../Components/Header';
 
 const Schedule = () => {
     const [hourlyValue, sethourlyValue] = useState(1);
-    const [date, setDate] = useState(new Date());
+    // const [date, setDate] = useState(new Date());
     const [selectedDate, setselectedDate] = useState(new Date());
     const selectedDateis = (value, event)=>{
         //alert(value)
@@ -26,13 +26,14 @@ const Schedule = () => {
     }
 
     const FunhourlyValue = (v)=>{
-        console.log(v);
+       
         sethourlyValue(v)
     }
 
     useEffect(() => {
-        
-    }, [date]);
+        setselectedDate(new Date())
+        sethourlyValue(1)
+    }, []);
     return (
         <div>
             <Header/>

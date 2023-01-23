@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 
-const Header = () => {text
+const Header = () => {
     return (
         <div className='hidden lg:block'>
             <div className='p-3 mainbackground flex text-white justify-between'>

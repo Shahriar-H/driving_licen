@@ -1,6 +1,7 @@
 
 // import Bg from "../Resources/Images/mainbg.png"
 // import Car from "../Resources/Images/car1.png"
+import Link from 'next/link';
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 
 
@@ -1500,7 +1501,7 @@ const Search = () => {
                     />
                 </div>
                 <div className='mt-4 lg:mt-0'>
-                    <a className='w-full block text-center lg:w-fit px-4 py-3 bg-blue-400  text-white rounded-md uppercase font-bold'>Search</a>
+                    <Link href="/pages/book_online" className='w-full block text-center lg:w-fit px-4 py-3 bg-blue-400  text-white rounded-md uppercase font-bold'>Search</Link>
                 </div>
             </div>
 

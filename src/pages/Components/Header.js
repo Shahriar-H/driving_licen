@@ -50,9 +50,9 @@ const Header = () => {
                         <Link href='/'>Pricing</Link>
                     </li>
                 </div>
-                <div className=''>
+                {/* <div className=''>
                     <Link href="/pages/book_online" className='px-4 py-3 bg-blue-400  text-white rounded-md uppercase font-bold'>Book Online</Link>
-                </div>
+                </div> */}
             </div>
         </div>
     );

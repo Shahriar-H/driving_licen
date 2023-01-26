@@ -1,8 +1,9 @@
 
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
-
+import { useState } from 'react';
 
 const CheckPricing = () => {
+    const [isauto, setisauto] = useState(true);
     const Cities = [
         {
             "name": "Sydney",
@@ -1441,6 +1442,10 @@ const CheckPricing = () => {
             "id": 358
         }
           ];
+
+    const autoManu = ()=>{
+        setisauto((prev)=>!prev)
+    }
     const handleOnSearch = (string, results) => {
         // onSearch will have as the first callback parameter
         // the string searched and for the second the results.
@@ -1493,11 +1498,11 @@ const CheckPricing = () => {
                         <div className='bg-gray-300 w-full rounded-sm flex justify-between items-start text-center'>
                             
                             <div className='bg-gray-300 p-2 w-full rounded-sm flex justify-between items-start text-center'>
-                                <div className='w-1/2 active_class py-1'>
-                                    <p><i className="bi bi-check-lg text-green-500"></i> Auto</p>
+                                <div className={`w-1/2 ${isauto&&'active_class'} py-1 cursor-pointer`} onClick={autoManu}>
+                                    <p>{isauto&&<i className="bi bi-check-lg text-green-500"></i>} Auto</p>
                                 </div>
-                                <div className='w-1/2 py-1'>
-                                    <p>Manual</p>
+                                <div onClick={autoManu} className={`w-1/2 ${!isauto&&'active_class'} py-1 cursor-pointer`}>
+                                    <p>{!isauto&&<i className="bi bi-check-lg text-green-500"></i>} Manual</p>
                                 </div>
                             </div>
 

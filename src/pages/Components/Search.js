@@ -1,11 +1,13 @@
 
 // import Bg from "../Resources/Images/mainbg.png"
 // import Car from "../Resources/Images/car1.png"
+import { useState } from 'react';
 import Link from 'next/link';
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 
 
 const Search = () => {
+    const [isauto, setisauto] = useState(true);
     const Cities = [
     {
         "name": "Sydney",
@@ -1445,7 +1447,9 @@ const Search = () => {
     }
       ];
 
-
+    const autoManu = ()=>{
+        setisauto((prev)=>!prev)
+    }
     const handleOnSearch = (string, results) => {
         // onSearch will have as the first callback parameter
         // the string searched and for the second the results.
@@ -1480,11 +1484,11 @@ const Search = () => {
         
             <div className='bg-white p-4 w-full lg:w-10/12 mx-auto mt-10 rounded-md lg:flex justify-between items-center space-x-0 lg:space-x-2'>
                 <div className='bg-gray-300 p-2 w-full lg:w-8/12 rounded-sm flex justify-between items-start text-center'>
-                    <div className='w-1/2 active_class py-1'>
-                        <p><i className="bi bi-check-lg text-green-500"></i> Auto</p>
+                    <div className={`w-1/2 ${isauto&&'active_class'} py-1 cursor-pointer`} onClick={autoManu}>
+                        <p>{isauto&&<i className="bi bi-check-lg text-green-500"></i>} Auto</p>
                     </div>
-                    <div className='w-1/2 py-1'>
-                        <p>Manual</p>
+                    <div onClick={autoManu} className={`w-1/2 ${!isauto&&'active_class'} py-1 cursor-pointer`}>
+                        <p>{!isauto&&<i className="bi bi-check-lg text-green-500"></i>} Manual</p>
                     </div>
                 </div>
                 <div className='w-full mt-2 lg:mt-0'>
@@ -1495,7 +1499,6 @@ const Search = () => {
                         onHover={handleOnHover}
                         onSelect={handleOnSelect}
                         onFocus={handleOnFocus}
-                        autoFocus
                         formatResult={formatResult}
                         styling={{borderRadius:"4px"}}
                     />

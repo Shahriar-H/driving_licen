@@ -14,16 +14,8 @@ import MainSection from './Components/MainSection';
 function App() {
   return (
     <div>
-   
-    
-     <Header/>
-     <MobileNav/>
      <Home/>
      <Fotter/>
-        
-
-
-    
     </div>
   );
 }

@@ -37,7 +37,7 @@ const BookNow = () => {
     }, []);
     return (
         <div>
-            <Header/>
+          
             <CompletionRoad complition="w-1/2"/>
            
             <div className='px-3 lg:px-24'>

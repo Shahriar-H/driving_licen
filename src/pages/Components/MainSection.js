@@ -61,10 +61,10 @@ const MainSection = () => {
             {/* <Search /> */}
           <div className="space-y-8 my-5">
             <div className="text-center">
-              <Link href="/pages/book_online" className='px-16 py-3 bg-black  text-white rounded-md uppercase font-bold'>Driving Packages</Link>
+              <Link href="/pages/book_online" className='px-16 py-3 bg-black  text-white rounded-md uppercase font-bold w-full lg:w-1/2'>Driving Packages</Link>
             </div>
             <div className="text-center">
-              <Link href="/pages/details" className='px-16 py-3 bg-white  text-black rounded-md uppercase font-bold w-full lg:w-fit'>Driving Lessons</Link>
+              <Link href="/pages/details" className='px-16 py-3 w-full lg:w-1/2 bg-white  text-black rounded-md uppercase font-bold'>Driving Packages & Lessons</Link>
             </div>
           </div>
         </div>

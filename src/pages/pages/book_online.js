@@ -7,13 +7,13 @@ import Header from '../Components/Header';
 import Fotter from '../Components/Footer';
 
 const BookOnline = () => {
-    const [calculatorVallue, setcalculatorVallue] = useState(199);
+    const [calculatorVallue, setcalculatorVallue] = useState(1);
     useEffect(() => {
-        setcalculatorVallue(199)
+        setcalculatorVallue(1)
     }, []);
     return (
         <div>
-            <Header/>
+           
             <div className='mainbackground mainbgImage py-12 px-2 sm:px-6'>
                 <div>
                     <h1 className='text-center text-white text-3xl lg:text-4xl font-extrabold leading-snug'>Where do you need a driving instructor?</h1>
@@ -69,7 +69,7 @@ const BookOnline = () => {
                             <option value={9}>9</option>
                             <option value={10}>10</option>
                         </select>
-                        <p className='font-bold text-xl sm:mt-10'>{calculatorVallue*100}$</p>
+                        <p className='font-bold text-xl sm:mt-10'>{calculatorVallue*80}$</p>
                     </div>
                     <div className='border-t-2 border-gray-400 md:border-none w-full flex md:block justify-between md:w-1/4 px-2 text-center mt-5 sm:mt-0'>
                         <p className=''>Test Package</p><br></br>

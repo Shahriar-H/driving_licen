@@ -37,7 +37,7 @@ const Schedule = () => {
     }, []);
     return (
         <div>
-            <Header/>
+           
             <CompletionRoad complition="w-1/4"/>
             <div className='mainbackground mainbgImage py-12 px-2 sm:px-6'>
                 <div>

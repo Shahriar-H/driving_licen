@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import MobileNav from './MobileNav';
 
 
 const Header = () => {
-    return (
+    return (<>
         <div className='hidden lg:block'>
             <div className='p-3 mainbackground flex text-white justify-between'>
                 <div className='mainbackground flex text-white space-x-4 text-sm'>
@@ -15,15 +16,15 @@ const Header = () => {
                     </div>
                     <p className='text-gray-500'>|</p>
                     <div className='space-x-4 flex'>
-                        <Link href='/'>Instruct with EzLicence</Link>
-                        <Link href='/'>Become an instructor</Link>
+                        <Link href='/become_a_instructor'>Instruct with EzLicence</Link>
+                        <Link href='/become_a_instructor'>Become an instructor</Link>
                     </div>
                 </div>
                 <div className='mainbackground flex text-white space-x-4 text-sm transition'>
                     <div className='space-x-4 flex uppercase'>
-                        <Link href='/'>LEARNNER LOGIN</Link>
+                        <Link href='/login'>LEARNNER LOGIN</Link>
                         <p className='text-gray-500'>|</p>
-                        <Link href='/'>Instructor Login</Link>
+                        <Link href='/instructor_login'>Instructor Login</Link>
                     </div>
                     
                     
@@ -55,6 +56,8 @@ const Header = () => {
                 </div> */}
             </div>
         </div>
+        <MobileNav/>
+        </>
     );
 }
 

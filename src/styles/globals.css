@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 :root{
-    --mainbg:rgb(81, 162, 248)
+    --mainbg:#137DC5
 }
 *{
     padding: 0;
@@ -55,4 +55,47 @@ a:hover,li:hover{
     height: 25rem;
     scrollbar-width: thin;
     scrollbar-color: black;
+}
+.addEVentScroll{
+    height: 80vh;
+    scrollbar-width: thin;
+    scrollbar-color: black;
+    overflow-y: auto;
+}
+.mobileShow{
+    left: -10000px;
+}
+.anim{
+    animation-name: ClossNave;
+    animation-duration: 0.4s;
+}
+.notshowing{
+    left: 0px;
+    animation-name: openNave;
+    animation-duration: 0.4s;
+}
+.customHorijontalScroll{
+    width: 100%;
+    display: flex;
+    scrollbar-width: thin;
+    overflow-x: scroll;
+    padding-bottom: 50px;
+
+}
+.customHorijontalScroll > div{
+    flex-shrink: 0;
+}
+@keyframes openNave {
+    0%{
+        left: -10000px;
+    }100%{
+        left: 0px;
+    }
+}
+@keyframes ClossNave {
+    0%{
+        left: 0px;
+    }100%{
+        left: -10000px;
+    }
 }

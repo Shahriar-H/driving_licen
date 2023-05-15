@@ -1,12 +1,14 @@
 
 // import Bg from "../Resources/Images/mainbg.png"
 // import Car from "../Resources/Images/car1.png"
-import { useState } from 'react';
+import { useState,useReducer } from 'react';
 import Link from 'next/link';
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
+// import { initialState,reducer } from '../lib/state_manager';
 
 
-const Search = () => {
+const Search = ({state,dispatch}) => {
+    // const [state,dispatch] = props
     const [isauto, setisauto] = useState(true);
     const Cities = [
     {
@@ -1449,10 +1451,12 @@ const Search = () => {
 
     const autoManu = ()=>{
         setisauto((prev)=>!prev)
+        dispatch({type:"change_vahicle",payload:isauto})
     }
     const handleOnSearch = (string, results) => {
         // onSearch will have as the first callback parameter
         // the string searched and for the second the results.
+        dispatch({type:"area",payload:string})
         console.log(string, results)
       }
     
@@ -1464,6 +1468,7 @@ const Search = () => {
       const handleOnSelect = (item) => {
         // the item selected
         // alert(JSON.stringify(item));
+        dispatch({type:"area",payload:item.name})
         console.log(item.name)
       }
     
@@ -1484,6 +1489,7 @@ const Search = () => {
         
             <div className='bg-white p-4 w-full lg:w-10/12 mx-auto mt-10 rounded-md lg:flex justify-between items-center space-x-0 lg:space-x-2'>
                 <div className='bg-gray-300 p-2 w-full lg:w-8/12 rounded-sm flex justify-between items-start text-center'>
+                    {/* {state.area} */}
                     <div className={`w-1/2 ${isauto&&'active_class'} py-1 cursor-pointer`} onClick={autoManu}>
                         <p>{isauto&&<i className="bi bi-check-lg text-green-500"></i>} Auto</p>
                     </div>
@@ -1504,7 +1510,7 @@ const Search = () => {
                     />
                 </div>
                 <div className='mt-4 lg:mt-0'>
-                    <Link href="/pages/book_online" className='w-full block text-center lg:w-fit px-4 py-3 bg-blue-400  text-white rounded-md uppercase font-bold'>Search</Link>
+                    <Link href="#" className='w-full block text-center lg:w-fit px-4 py-3 bg-blue-400  text-white rounded-md uppercase font-bold'>Search</Link>
                 </div>
             </div>
 

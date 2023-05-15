@@ -1509,7 +1509,7 @@ const CheckPricing = () => {
                         </div>
                         <div className='flex justify-between flex-wrap items-center w-full'>
                             <div className='w-full lg:w-9/12'>
-                                {/* <input className='w-full border-gray-300 rounded-sm p-2' style={{border:'1px solid grey'}} placeholder='Enter your State' type="text"/> */}
+                                
                                 <ReactSearchAutocomplete
                                     items={Cities}
                                     onSearch={handleOnSearch}

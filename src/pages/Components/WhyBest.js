@@ -1,6 +1,8 @@
-
-
-const WhyBest = () => {
+import { useEffect,useState } from "react";
+import React from 'react';
+const WhyBest = ({Data}) => {
+   
+   
     return (
         <div className='bg-gray-100 px-5 lg:px-24 py-12'>
             <div className='text-center mb-12'>
@@ -9,11 +11,14 @@ const WhyBest = () => {
             </div><br></br>
 
             <div className='w-full flex justify-start items-center flex-wrap space-y-3'>
-                <div className='w-full lg:w-4/12 flex justify-start items-center space-x-2'>
+                {Data?.result&& Array.isArray(Data?.result)&&Data?.result.map((data,index)=>index!==0&& <div key={index} className='w-full lg:w-4/12 flex justify-start items-center space-x-2'>
                     <i className="bi bi-check2 text-4xl text-blue-400"></i>
-                    <p>High driving test pass rates as we focus on 100% scored. </p>
+                    <p>{data?.reason}</p>
                 </div>
-                <div className='w-full lg:w-4/12 flex justify-start items-center space-x-2'>
+                )}
+
+
+                {/* <div className='w-full lg:w-4/12 flex justify-start items-center space-x-2'>
                     <i className="bi bi-check2 text-4xl text-blue-400"></i>
                     <p>Highly structured quality driving lessons into 3 stages of driving skills assessment. </p>
                 </div>
@@ -52,7 +57,7 @@ const WhyBest = () => {
                 <div className='w-full lg:w-4/12 flex justify-start items-center space-x-2'>
                     <i className="bi bi-check2 text-4xl text-blue-400"></i>
                     <p>Do you want to give gift certificates, gift cards or vouchers to your loved ones? We got it all! </p>
-                </div>
+                </div> */}
             </div>
         </div>
     );

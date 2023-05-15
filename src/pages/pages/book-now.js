@@ -7,15 +7,41 @@ import 'react-calendar/dist/Calendar.css';
 import Link from 'next/link';
 import Header from '../Components/Header';
 import CompletionRoad from '../Components/CompletionRoad';
+import Router from 'next/router';
 
 
-const BookNow = () => {
-    const [hourlyValue, sethourlyValue] = useState(1);
+const BookNow = ({state,dispatch}) => {
+    const newDate = new Date();
+    const yyyy = newDate.getFullYear();
+    const mm = String(newDate.getMonth()+1).padStart(2,'0');
+    const dd = String(newDate.getDate()).padStart(2,'0');
+    const hour = newDate.getHours();
+    const todaysDateis =yyyy+'-'+mm+'-'+dd; 
+    const [hourlyValue, sethourlyValue] = useState(null);
+    const [sessionfor, setsessionfor] = useState(true);
+    const [todaysDate, settodaysDate] = useState(todaysDateis);
+    const [allOptions, setallOptions] = useState([]);
+
     // const [date, setDate] = useState(new Date());
-    const [selectedDate, setselectedDate] = useState(new Date());
-    const selectedDateis = (value, event)=>{
-        //alert(value)
-        setselectedDate(value)
+    const [selectedDate, setselectedDate] = useState(todaysDateis);
+    let content=[];
+    const selectedDateis = (value)=>{
+        setselectedDate(value);
+        if(value===todaysDate){
+            for(let i=hour;i<23; i++){
+                content.push(String(i)+":00 to "+String(i+1)+":00")
+                // content += `<option value='${i}:00 to ${i+1}:00'>${i}:00 to ${i+1}:00</option>`
+            }
+        }else if(value>todaysDate){
+            content=[];
+
+            for(let i=6;i<23; i++){
+                content.push(String(i)+":00 to "+String(i+1)+":00")
+                // content += `<option value='${i}:00 to ${i+1}:00'>${i}:00 to ${i+1}:00</option>`;
+            }
+        }
+        setallOptions(content)
+        console.log(content);
     }
 
     const tileContent = ({date, view}) => {
@@ -27,14 +53,27 @@ const BookNow = () => {
     }
 
     const FunhourlyValue = (v)=>{
-       
-        sethourlyValue(v)
+       sethourlyValue(v)
+    }
+
+    const savetostate = ()=>{
+        dispatch({type:'time_duration',payload:{duration:sessionfor,date:selectedDate,time:hourlyValue}})
+        Router.push("/pages/details")
     }
 
     useEffect(() => {
-        setselectedDate(new Date())
-        sethourlyValue(1)
+        settodaysDate(todaysDateis)
+        if(!state?.price || !state?.instructor || !state?.area){
+            Router.push('/pages/schedule')
+        }
+        console.log(selectedDate);
     }, []);
+
+
+
+
+
+
     return (
         <div>
           
@@ -72,11 +111,11 @@ const BookNow = () => {
                                 <p className='text-xs lg:text-sm pb-1'>Lesson Duration:</p>
                                 <div className='flex space-x-5'>
                                     <div>
-                                        <input name='Duration' type="radio" />
+                                        <input checked={sessionfor} onChange={()=>setsessionfor(true)} name='Duration' type="radio" />
                                         <label> 1 hour</label>
                                     </div>
                                     <div>
-                                        <input name='Duration' type="radio" />
+                                        <input checked={!sessionfor} onChange={()=>setsessionfor(false)} name='Duration' type="radio" />
                                         <label> 2 hour</label>
                                     </div>
                                 </div>
@@ -84,25 +123,30 @@ const BookNow = () => {
                             <br></br>
                             <div className='w-full'>
                                 <p className='text-xs lg:text-sm'>Select Date:</p>
-                                <select onChange={(v)=>FunhourlyValue(v.target.value)} className='py-2 px-3 lg:px-10 shadow-sm bg-gray-300 w-full'>
+                                {/* <select onChange={(v)=>FunhourlyValue(v.target.value)} className='py-2 px-3 lg:px-10 shadow-sm bg-gray-300 w-full'>
                                     <option selected disabled>Select Date</option>
                                     <option value={1}>Sat 12, Jan 2023</option>
                                     <option value={2}>Sat 13, Jan 2023</option>
                                     <option value={3}>Sat 14, Jan 2023</option>
                                     <option value={4}>Sat 15, Jan 2023</option>
                                     <option value={5}>Sat 16, Jan 2023</option>
-                                </select>
+                                </select> */}
+                                <input onChange={(v)=>selectedDateis(v.target.value)} type='date' className='py-2 px-3 lg:px-10 shadow-sm bg-gray-300 w-full' />
                             </div>
                             
                             <div className='w-full'>
                                 <p className='text-xs lg:text-sm'>Select Time:</p>
+                               
                                 <select onChange={(v)=>FunhourlyValue(v.target.value)} className='py-2 px-3 w-full lg:px-10 shadow-sm bg-gray-300'>
-                                    <option selected disabled>Select Time</option>
-                                    <option value={1}>10:00 am to 11:00 am</option>
-                                    <option value={2}>11:00 am to 12:00 pm</option>
-                                    <option value={3}>12:00 pm to 13:00 pm</option>
-                                    <option value={4}>13:00 pm to 14:00 pm</option>
-                                    <option value={5}>10:00 am to 11:00 am</option>
+                                    <option selected disabled>Select Date First</option>
+
+                                    {
+                                        allOptions&&selectedDate&&selectedDate>=todaysDate?(
+                                            allOptions?.map((time,index)=><option key={index} value={time}>{time}</option>)
+                                            
+                                        ):
+                                        <option disabled>Invalid Date</option>
+                                    }
                                 </select>
                             </div>
                             
@@ -127,9 +171,9 @@ const BookNow = () => {
                 </div>
 
                 <br></br>
-                <div className='mb-12'>
+                <div className='mb-12 flex'>
                     
-                    <Link href="/pages/details" className='px-4 py-3 bg-blue-400  text-white rounded-md uppercase font-bold'>Sent Request</Link>
+                    <p onClick={savetostate} className='px-4 py-3 bg-blue-400  text-white rounded-md uppercase font-bold w-fit'>Countinue</p>
                     <Link href="/pages/schedule" className='px-4 py-3 text-black rounded-md uppercase font-bold'>Back</Link>
                 </div>
 

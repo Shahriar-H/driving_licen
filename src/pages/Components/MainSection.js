@@ -7,8 +7,8 @@ import Search from "./Search";
 import Image from "next/image";
 import Link from "next/link";
 
-const MainSection = () => {
-  const images = ['fimpress.gif','Ch_2.gif']
+const MainSection = ({images:photos}) => {
+  const images = [photos?.result[0]?.photo,photos?.result[1]?.photo];
   
   const selectImage = ()=>{
     let selectindex = Math.floor(Math.random() * 2);
@@ -64,13 +64,13 @@ const MainSection = () => {
               <Link href="/pages/book_online" className='px-16 py-3 bg-black  text-white rounded-md uppercase font-bold w-full lg:w-1/2'>Driving Packages</Link>
             </div>
             <div className="text-center">
-              <Link href="/pages/details" className='px-16 py-3 w-full lg:w-1/2 bg-white  text-black rounded-md uppercase font-bold'>Driving Packages & Lessons</Link>
+              <Link href="/pages/book_online" className='px-16 py-3 w-full lg:w-1/2 bg-white  text-black rounded-md uppercase font-bold'>Driving Packages & Lessons</Link>
             </div>
           </div>
         </div>
 
         <div className="w-full lg:w-1/2 flex justify-center">
-          <Image className='' src={`/Resources/Images/${selectImage()}`} width="500" height={500}  alt="car"/>
+          <Image className='' src={`http://myaddmin.virtualxpose.com.au/driving/drivierImages/${selectImage()}`} width="500" height={500}  alt="car"/>
         </div>
 
       </div>

@@ -1,25 +1,30 @@
-import { useState,useEffect } from 'react';
+import { useState,useEffect,useReducer } from 'react';
 import MainSection from '../Components/MainSection';
 import Search from '../Components/Search';
 // import Bg from "../Resources/Images/mainbg.png"
 import Packages from '../Components/BookOnline/Packages';
 import Header from '../Components/Header';
 import Fotter from '../Components/Footer';
+import Package from '../Components/BookOnline/Package';
+// import { initialState, reducer } from '../lib/state_manager';
+import { useRouter } from 'next/router';
 
-const BookOnline = () => {
+const BookOnline = ({Data,state, dispatch}) => {
+    const [isfoundData, setisfoundData] = useState(false);
+    const router = useRouter();
+    const pricing = router.query.pricing;
+    console.log(pricing);
+    // const [state, dispatch] = useReducer(reducer,initialState)
     const [calculatorVallue, setcalculatorVallue] = useState(1);
+    const [areaHere, setareaHere] = useState(state.area);
     useEffect(() => {
-        setcalculatorVallue(1)
+        setcalculatorVallue(1);
+        console.log(state);
     }, []);
     return (
         <div>
            
-            <div className='mainbackground mainbgImage py-12 px-2 sm:px-6'>
-                <div>
-                    <h1 className='text-center text-white text-3xl lg:text-4xl font-extrabold leading-snug'>Where do you need a driving instructor?</h1>
-                </div>
-                <Search/>
-            </div>
+            
 
             <div className='bg-blue-300 px-3 lg:px-24 py-10 flex flex-wrap justify-center'>
                 <div className='w-full lg:w-2/5 flex items-center'>
@@ -28,7 +33,7 @@ const BookOnline = () => {
                         <p className='text-xl text-gray-600'>We have <b>10 auto instructors</b> available in Sydney, 2000</p>
                     </div>
                 </div>
-                <div className='w-full lg:w-7/12 bg-white rounded-md p-5 border-black border-2 flex flex-wrap justify-start'>
+                <div className={`w-full lg:w-7/12 ${pricing?"bg-red-100 shadow-lg shadow-gray-600":"bg-white"} rounded-md p-5 border-black border-2 flex flex-wrap justify-start`}>
                     <div className='w-full sm:w-4/6 md:w-1/2 sm:border-r-2 border-dotted border-gray-500'>
                         <h2 className='text-xl'>Driving Lesson Pricing</h2>
                         <p className='text-gray-500 text-xs'>Our Available Packages</p>
@@ -84,13 +89,50 @@ const BookOnline = () => {
                 </div>
             </div>
 
-            <div className='px-2 sm:px-6 py-12'>
-                
-                <Packages/>
+            {/* Search Div */}
+            <div className='mainbackground mainbgImage py-12 px-2 sm:px-6'>
+                <div>
+                    <h1 className='text-center text-white text-3xl lg:text-4xl font-extrabold leading-snug'>Where do you need a driving instructor?</h1>
+                </div>
+                <Search state={state} dispatch={dispatch}/>
+            </div>
+
+            <div className='px-2 sm:px-6 py-12 flex justify-center flex-wrap'>
+                {/* {state?.area}
+                {state?.v_type} */}
+                {
+                    Data?.result
+                    .filter((f_data)=>{
+                        if(f_data?.service_area?.indexOf(state.area) !== -1 && f_data?.v_type===state.v_type){
+                            console.log(f_data);
+                            // setisfoundData(true);
+                            return f_data;
+                            
+                        }
+                        
+                    })
+                    .map((data,index)=>data?.status==='approved'&&<Package key={index} data={data} state={state} dispatch={dispatch}/>)
+
+                    
+                }
+                {/* {!isfoundData&&<p className='text-center'>No Instructor available in this area right now.</p>} */}
             </div>
             <Fotter/>
         </div>
     );
+}
+
+export const getServerSideProps= async ()=>{
+    try {
+        const response = await fetch(process.env.API_URL+"instructors");
+        const Data = await response.json();
+        //console.log(Data);
+        return {props:{Data}}
+    } catch (error) {
+        console.log(error);
+        return {props:{error}}
+    }
+    
 }
 
 export default BookOnline;

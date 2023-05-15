@@ -3,7 +3,7 @@ import Link from "next/link";
 
 // import HowTodo from "../Resources/Images/howtodo.webp"
 
-const Howitswork = () => {
+const Howitswork = ({images}) => {
     return (
         <div className='px-5 lg:px-24 py-11 '>
             <div className='text-center mb-12'>
@@ -13,7 +13,7 @@ const Howitswork = () => {
 
             <div className='flex flex-wrap justify-center items-center w-full'>
                 <div className='w-full lg:w-1/2 flex justify-center items-center'>
-                    <Image src={"/Resources/Images/howtodo.webp"} width="300" height={300} alt="how" />
+                    <Image src={"http://myaddmin.virtualxpose.com.au/driving/drivierImages/"+images?.photo} width="300" height={300} alt="how" />
                 </div>
                 <div className='w-full lg:w-1/2'>
                     <div>

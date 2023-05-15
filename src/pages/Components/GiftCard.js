@@ -3,13 +3,13 @@ import Link from 'next/link';
 // import giftCard from "../public/Resources/Images/giftCard";
 import Image from 'next/image';
 
-const GiftCard = () => {
+const GiftCard = ({images}) => {
     return (
-        <div className='px-5 lg:px-24 py-11 bg-gray-100'>
+        <div className='px-5 lg:px-24 py-11 bg-gray-100' id="giftCard">
             
             <div className='flex flex-wrap justify-center items-center w-full'>
                 <div className='w-full lg:w-1/2 flex justify-center items-center'>
-                    <Image className='' src={"/Resources/Images/giftCard.png"} height="400" width={400} alt="image" />
+                    <Image className='' src={"http://myaddmin.virtualxpose.com.au/driving/drivierImages/"+images?.photo} height="400" width={400} alt="image" />
                 </div>
                 <div className='w-full lg:w-1/2'>
                     <h2 className='text-center text-2xl font-extrabold'>The gift of life long skills</h2><br></br><br></br>
